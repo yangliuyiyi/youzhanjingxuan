@@ -1,0 +1,323 @@
+*{
+ margin:0;
+ padding:0;
+ list-style:none;
+ box-sizing: border-box;   
+ 
+ position: relative;
+}
+img{
+    border: none;
+    vertical-align: middle;
+}
+body{
+    background: #F2F2F2;
+     font-family: "ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","WenQuanYi Micro Hei",sans-serif;
+     font-size: 14px;
+}
+a{
+    text-decoration: none;
+}
+$l-device:1366px;
+$m-device:1200px;
+
+$s-device:988px;
+$ss-device:768px;
+
+@mixin  onss{
+    @media screen and (max-width:$ss-device){
+       @content; 
+    }
+}
+@mixin  ons{
+    @media screen and (max-width:$s-device){
+       @content; 
+    }
+}
+@mixin  onm{
+    @media screen and (max-width:$m-device){
+       @content; 
+    }
+}
+@mixin  onl{
+    @media screen and (max-width:$l-device){
+       @content; 
+    }
+}
+$number:12;
+$list:('l':$l-device,'m':$m-device,'s':$s-device,'ss':$ss-device);
+@each $d  in map_keys($list){
+    @media screen and (max-width:map_get($list,$d)){
+        @for $i from 1 through $number{
+              .col.#{$d}#{$i}{
+        width:percentage($i/$number);
+        }
+       
+    }
+    }
+   
+}
+
+.container{
+    padding-left:15px;
+    padding-right:15px;
+    margin:auto;
+    @include onl{
+        width:1140px;
+    }
+    @include onm{
+        width:940px;
+    }
+     @include ons{
+        width:720px;
+    }
+     @include onss{
+        width:90%;
+    }
+}
+
+.row{
+    margin-left: -15px;
+    margin-right: -15px;
+    &::after{
+        content: '';
+        clear: both;
+        display: block;
+    }
+     &::before{
+        content: '';
+        clear: both;
+        display: block;
+    }
+}
+.col{
+   width: 100%;
+    min-height: 1px;
+    position: relative;
+    float:left;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+//头部开始
+
+
+.header{
+    background: #222 url(../imgs/2de797545de56274f03a5920eb3a1.jpg)no-repeat center 0;
+    background-size: cover;
+    padding:138px 0 0;
+    text-align: center;
+    min-height: 400px;
+ 
+    .logotxt{
+        margin-bottom: 30px;
+        border: 0px none;
+     
+      
+        h1{
+           font-size:36px;
+           margin-top: 20px;
+           margin-bottom: 10px; 
+           a{
+               font-weight: 700;
+               color:#fff;
+               font-size: 64px;
+               &:hover{
+                   text-decoration: underline;
+               }
+           }
+        }
+        h2{
+            text-align: center;
+            margin: 0 0 45px;
+            font-size: 34px;
+            color:#fff;
+             font-weight: 100;
+        }
+        
+    }
+    .logo{
+       position: absolute;
+       bottom: -34px;
+       left:1%;
+       right:1%; 
+    }
+}
+
+
+
+//图片 栅格开始
+
+.main{
+   width:100%;
+   margin-top: 90px;
+   .content{
+       width:100%;
+       padding-bottom:40px;
+       margin-bottom: 30px;
+     
+       background: #fff;
+       box-shadow: 0 1px 2px 0 rgba(0,0,0,0.1);
+       a{
+         
+           display: block;
+           padding:12px;
+           width:100%;
+           img{
+               width: 100%;
+               height: 100%;
+           }
+       }
+       h2{
+           width: 100%;
+           position: absolute;
+           bottom:1px;
+           left:0;
+           right:0;
+           margin: auto;
+           a{
+               color:#777;
+               font-size:24px;
+               text-align: center;
+               font-weight: 500;
+               &:hover{
+                   color:#222;
+                   text-decoration: underline;
+               }
+           }
+       }
+   }
+}
+.main .container .pagination{
+    display: block;
+    font-size: 13px;
+    color:#666;
+    text-align: center;
+    margin: 20px 0;
+    border-radius: 4px;
+    .page-number{
+        display: block;
+        color:#39414a;
+    }
+    .older-posts{
+        right:10px;
+        border: 1px solid #39414a;
+        color: #39414a;
+        display: block;
+        padding:10px;
+        border-radius: 3px;
+        position: absolute;
+        top:-10px;
+        &:hover{
+            border-color:#666;
+            color:#fff;
+            background:#4a4849 ;
+        }
+    }
+}
+
+
+//提交作品开始
+.submit-site{
+    padding-bottom: 40px;
+    padding-top: 40px;
+    margin-top: 20px;
+    background: #eee;
+    .submit{
+      
+        p{
+        margin: 0 0 10px;
+        text-align: center;
+        a{
+          color: #337ab7;
+          &:hover{
+              color:#23527c;
+              text-decoration: underline;
+          }
+        }
+        }
+       
+    }
+}
+
+
+
+//底部footer开始
+.main-footer{
+  background: #202020;
+  padding: 35px 0 0;
+  color: #959595;
+  .col{
+      padding-left: 0;
+      padding-right: 0;
+  }
+  .widget{
+      padding:0 30px;
+      margin-bottom: 35px;
+       .title{
+           color:#fff;
+           border-bottom: 1px solid #303030;
+           padding-bottom:7px;
+           margin-bottom:  21px;
+           font-size: 18px;
+           font-weight: 500;
+           &::after{
+               content:'';
+               width:90px;
+               height:1px;
+               background: #337AB7;
+               position: absolute;
+               left:0;
+               bottom:0px;
+           }
+       }
+       .content{
+           a{
+               display: block;
+               color:#959595;
+               padding-bottom:14px;
+               border-bottom: 1px dashed #303030;
+               margin-bottom: 14px;
+               &:hover{
+                   color:#fff;
+               }
+           }
+       }
+       .tag-cloud{
+           a{
+               border:1px solid #303030;
+               padding:2px 7px;
+               margin: 0 7px 7px 0;
+               display:inline-block; 
+               &:hover{
+                   border: 1px solid #337ab7;
+                   background: #337ab7;
+               }
+           }
+       }
+  }
+}
+
+
+//copyright开始
+
+.copyright{
+    background: #111;
+    padding-top: 14px;
+    padding-bottom: 20px;
+    border-top:1px solid #303030;
+    font-size: 13px;
+    text-align: center;
+    color:#555;
+    span{
+       margin: 0 7px;
+       a{
+           color:#555;
+           &:hover{
+               text-decoration: underline;
+           }
+       }
+        
+    }
+}
